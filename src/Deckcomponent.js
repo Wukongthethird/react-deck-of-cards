@@ -33,8 +33,8 @@ function DeckComponent(){
   useEffect( function drawCardOnClick(){
     async function getCard(){
       const response = await axios.get(BASE_URL+deckOfCardsId+DRAW);
-        setPlayedCards( playedCards => 
-          [...playedCards, response.data.cards[0]]);
+        setPlayedCards( playedCards => [...playedCards, response.data.cards[0]]);
+    }
     if(deckOfCardsId !==null)  getCard();
   }, [isDrawing]);
 
@@ -47,6 +47,7 @@ function DeckComponent(){
 
 
   // })
+  console.log(playedCards.length)
   if( isLoading) return <p>Shuffling......</p>
 
   return (
