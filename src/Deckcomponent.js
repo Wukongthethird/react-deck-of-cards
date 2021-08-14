@@ -14,7 +14,6 @@ let DRAW = `/draw/`;
 function DeckComponent(){
 
   const [deckOfCardsId, setDeckOfCardsId ] = useState(null);
-  const [isDrawing, setIsDrawing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [playedCards, setPlayedCards] = useState([]);
   const [isShuffling, setIsShuffling] = useState(false);
@@ -35,15 +34,6 @@ function DeckComponent(){
       setPlayedCards( playedCards => [...playedCards, response.data.cards[0]]);
   }
 
-  // Draws a card from API and updates playedCards
-  // useEffect( function drawCardOnClick(){
-  //   async function getCard(){
-  //     const response = await axios.get(BASE_URL+deckOfCardsId+DRAW);
-  //       setPlayedCards( playedCards => [...playedCards, response.data.cards[0]]);
-  //   }
-  //   if(deckOfCardsId !==null)  getCard();
-  // }, [isDrawing]);
-
 
   useEffect(function shuffleDeckAPI(){
     async function shuffle(){
@@ -60,11 +50,7 @@ function DeckComponent(){
   function shuffleDeck(){
     setIsShuffling((isShuffling) => !isShuffling);
   }
-  // useEffect( function drawOnClick(){
 
-
-  // })
-  console.log(playedCards.length)
   if( isLoading) return <p>Shuffling......</p>
 
   return (
